@@ -1,0 +1,6 @@
+@eKancelaria_HostAddress = http://localhost:5228
+
+GET {{eKancelaria_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,25 @@
+Microsoft (R) Xml Schemas/DataTypes support utility
+[Microsoft (R) .NET Framework, Version 4.8.3928.0]
+Copyright (C) Microsoft Corporation. All rights reserved.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typNazwa10' nie zostaˆ zadeklarowany lub nie jest typem prostym. Line 60, position 6.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typData' nie zostaˆ zadeklarowany lub nie jest typem prostym. Line 65, position 6.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typNazwa60' nie zostaˆ zadeklarowany lub nie jest typem prostym. Line 10, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typAdresat' nie zostaˆ zadeklarowany. Line 27, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typAdresat' nie zostaˆ zadeklarowany. Line 28, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typSkladajacy' nie zostaˆ zadeklarowany. Line 29, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typListaPowodow' nie zostaˆ zadeklarowany. Line 30, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typListaPozwanych' nie zostaˆ zadeklarowany. Line 31, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typNazwa60' nie zostaˆ zadeklarowany. Line 32, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typOplata' nie zostaˆ zadeklarowany. Line 42, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typKoszty' nie zostaˆ zadeklarowany. Line 43, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typKoszty' nie zostaˆ zadeklarowany. Line 44, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typRachunekDoZwrotuOplat' nie zostaˆ zadeklarowany. Line 45, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typLista' nie zostaˆ zadeklarowany. Line 50, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typListaDowodow' nie zostaˆ zadeklarowany. Line 51, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typTekstowy' nie zostaˆ zadeklarowany. Line 52, position 8.
+Schema validation warning: Typ 'http://www.currenda.pl/epu:typTekstowy' nie zostaˆ zadeklarowany. Line 53, position 8.
+
+Warning: Schema could not be validated. Class generation may fail or may produce incorrect results.
+
+
+If you would like more help, please type "xsd /?".
