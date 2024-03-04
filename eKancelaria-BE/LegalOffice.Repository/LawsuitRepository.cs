@@ -5,20 +5,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace LegalOffice.Repository
 {
     public interface ILawsuitRepository : IRepository<Lawsuit>
     {
-   
+        Task<IEnumerable<Lawsuit>> GetAll();
     }
 
-    internal class LawsuitRepository :Repository<Lawsuit>, ILawsuitRepository
+    public class LawsuitRepository : Repository<Lawsuit>, ILawsuitRepository
     {
         private readonly LegalOfficeDbContext _context;
         public LawsuitRepository(LegalOfficeDbContext context) : base(context)
         {
             _context = context;
+        }
+
+        public async Task<IEnumerable<Lawsuit>> GetAll()
+        {
+            return await _context.Lawsuits
+                .Include(l => l.Plantiffs)
+                .Include(l => l.Addressee)
+                .Include(l => l.Submitter)
+                .Include(l => l.Fee)
+                .Include(l => l.Cost)
+                .Include(l => l.RefundAccount)
+                .Include(l => l.Claims).ToListAsync();
         }
     }
 }
