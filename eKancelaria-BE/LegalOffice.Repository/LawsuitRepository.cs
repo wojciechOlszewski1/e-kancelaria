@@ -11,7 +11,7 @@ namespace LegalOffice.Repository
 {
     public interface ILawsuitRepository : IRepository<Lawsuit>
     {
-        Task<IEnumerable<Lawsuit>> GetAll();
+       new Task<IEnumerable<Lawsuit>> GetAll();
     }
 
     public class LawsuitRepository : Repository<Lawsuit>, ILawsuitRepository
@@ -22,16 +22,17 @@ namespace LegalOffice.Repository
             _context = context;
         }
 
-        public async Task<IEnumerable<Lawsuit>> GetAll()
+        new public async Task<IEnumerable<Lawsuit>> GetAll()
         {
-            return await _context.Lawsuits
+            var t= await _context.Lawsuits
                 .Include(l => l.Plantiffs)
-                .Include(l => l.Addressee)
                 .Include(l => l.Submitter)
                 .Include(l => l.Fee)
                 .Include(l => l.Cost)
                 .Include(l => l.RefundAccount)
                 .Include(l => l.Claims).ToListAsync();
+
+            return t;
         }
     }
 }

@@ -28,6 +28,7 @@ namespace LegalOffice.Domain.Models
         public Addressee Addressee { get; }
 
         public IEnumerable<Plantiff> Plantiffs { get; set; }
+        public IEnumerable<Plantiff> Defendant { get; set; }
         public Submitter Submitter { get; set; }
         public IEnumerable<Claim> Claims { get; set; }
         public string Ground { get; set; }

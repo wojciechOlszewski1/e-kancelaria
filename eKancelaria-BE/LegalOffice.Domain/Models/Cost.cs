@@ -11,10 +11,10 @@ namespace LegalOffice.Domain.Models
         public int Id { get; set; }
         public decimal Value { get; set; }
 
-        public sbyte Adjudication { get; set; }
+        public sbyte? Adjudication { get; set; }
 
-        public sbyte AccordingToStandards { get; set; }
+        public sbyte? AccordingToStandards { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
     }
 }

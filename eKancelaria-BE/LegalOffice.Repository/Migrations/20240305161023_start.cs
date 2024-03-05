@@ -18,11 +18,11 @@ namespace LegalOffice.Repository.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Street = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     HouseNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ApartmentNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    ApartmentNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     PostalCode = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Postal = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Country = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Country = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -36,9 +36,9 @@ namespace LegalOffice.Repository.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Value = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    Adjudication = table.Column<short>(type: "smallint", nullable: false),
-                    AccordingToStandards = table.Column<short>(type: "smallint", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Adjudication = table.Column<short>(type: "smallint", nullable: true),
+                    AccordingToStandards = table.Column<short>(type: "smallint", nullable: true),
+                    Description = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -197,6 +197,7 @@ namespace LegalOffice.Repository.Migrations
                     AddressId = table.Column<int>(type: "int", nullable: false),
                     AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     LawsuitId = table.Column<int>(type: "int", nullable: true),
+                    LawsuitId1 = table.Column<int>(type: "int", nullable: true),
                     Company_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Headquarters = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     REGON = table.Column<string>(type: "nvarchar(max)", nullable: true),
@@ -227,6 +228,11 @@ namespace LegalOffice.Repository.Migrations
                     table.ForeignKey(
                         name: "FK_Plantiffs_Lawsuits_LawsuitId",
                         column: x => x.LawsuitId,
+                        principalTable: "Lawsuits",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_Plantiffs_Lawsuits_LawsuitId1",
+                        column: x => x.LawsuitId1,
                         principalTable: "Lawsuits",
                         principalColumn: "Id");
                 });
@@ -336,6 +342,11 @@ namespace LegalOffice.Repository.Migrations
                 column: "LawsuitId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Plantiffs_LawsuitId1",
+                table: "Plantiffs",
+                column: "LawsuitId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Submitter_AddressId",
                 table: "Submitter",
                 column: "AddressId");
@@ -366,6 +377,10 @@ namespace LegalOffice.Repository.Migrations
         {
             migrationBuilder.DropForeignKey(
                 name: "FK_Plantiffs_Lawsuits_LawsuitId",
+                table: "Plantiffs");
+
+            migrationBuilder.DropForeignKey(
+                name: "FK_Plantiffs_Lawsuits_LawsuitId1",
                 table: "Plantiffs");
 
             migrationBuilder.DropTable(

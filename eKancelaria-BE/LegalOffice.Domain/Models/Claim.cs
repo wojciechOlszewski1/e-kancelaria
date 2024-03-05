@@ -9,7 +9,7 @@ namespace LegalOffice.Domain.Models
     public class Claim
     {
         public int Id { get; set; }
-        public InterestPeriod[] InterestPeriods { get; set; }
+        public InterestPeriod[]? InterestPeriods { get; set; }
 
         public sbyte[] Proofs { get; set; }
 

@@ -19,6 +19,7 @@ builder.Services.AddScoped<IRepository<GroundTemplate>, Repository<GroundTemplat
 builder.Services.AddScoped<IPlaintiffRepository, PlaintiffRepository>();
 builder.Services.AddScoped<IPlaintiffService, PlaintiffService>();
 builder.Services.AddScoped<IObslugaGus, ObslugaGus>();
+builder.Services.AddScoped<ILawsuitRepository, LawsuitRepository>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
