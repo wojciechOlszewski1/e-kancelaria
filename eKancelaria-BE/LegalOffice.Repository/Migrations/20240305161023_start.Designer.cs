@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LegalOffice.Repository.Migrations
 {
     [DbContext(typeof(LegalOfficeDbContext))]
-    [Migration("20240301195351_start")]
+    [Migration("20240305161023_start")]
     partial class start
     {
         /// <inheritdoc />
@@ -34,7 +34,6 @@ namespace LegalOffice.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ApartmentNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("City")
@@ -42,7 +41,6 @@ namespace LegalOffice.Repository.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Country")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("HouseNumber")
@@ -122,14 +120,13 @@ namespace LegalOffice.Repository.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<short>("AccordingToStandards")
+                    b.Property<short?>("AccordingToStandards")
                         .HasColumnType("smallint");
 
-                    b.Property<short>("Adjudication")
+                    b.Property<short?>("Adjudication")
                         .HasColumnType("smallint");
 
                     b.Property<string>("Description")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Value")
@@ -380,6 +377,9 @@ namespace LegalOffice.Repository.Migrations
                     b.Property<int?>("LawsuitId")
                         .HasColumnType("int");
 
+                    b.Property<int?>("LawsuitId1")
+                        .HasColumnType("int");
+
                     b.Property<int>("PartyType")
                         .HasColumnType("int");
 
@@ -397,6 +397,8 @@ namespace LegalOffice.Repository.Migrations
                     b.HasIndex("AddressId");
 
                     b.HasIndex("LawsuitId");
+
+                    b.HasIndex("LawsuitId1");
 
                     b.ToTable("Plantiffs");
 
@@ -600,8 +602,12 @@ namespace LegalOffice.Repository.Migrations
                         .IsRequired();
 
                     b.HasOne("LegalOffice.Domain.Models.Lawsuit", null)
-                        .WithMany("Plantiffs")
+                        .WithMany("Defendant")
                         .HasForeignKey("LawsuitId");
+
+                    b.HasOne("LegalOffice.Domain.Models.Lawsuit", null)
+                        .WithMany("Plantiffs")
+                        .HasForeignKey("LawsuitId1");
 
                     b.Navigation("Address");
                 });
@@ -633,6 +639,8 @@ namespace LegalOffice.Repository.Migrations
             modelBuilder.Entity("LegalOffice.Domain.Models.Lawsuit", b =>
                 {
                     b.Navigation("Claims");
+
+                    b.Navigation("Defendant");
 
                     b.Navigation("Plantiffs");
                 });
