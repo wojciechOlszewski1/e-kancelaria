@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LegalOffice.Repository.Migrations
 {
     [DbContext(typeof(LegalOfficeDbContext))]
-    [Migration("20240305161023_start")]
+    [Migration("20240306100411_start")]
     partial class start
     {
         /// <inheritdoc />
@@ -362,7 +362,6 @@ namespace LegalOffice.Repository.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AccountNumber")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("AddressId")

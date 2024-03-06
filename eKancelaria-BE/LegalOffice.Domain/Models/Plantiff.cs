@@ -24,7 +24,7 @@ namespace LegalOffice.Domain.Models
 
         public Address Address { get; set; }
 
-        public string AccountNumber { get; set; }
+        public string? AccountNumber { get; set; }
 
     }
 }
