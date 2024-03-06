@@ -6,13 +6,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using eKancelaria.Controllers;
 using GusApi;
+using System.Configuration;
+using eCourt;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+builder.Services.Configure<ECourtSettings>(builder.Configuration.GetSection("ECourt"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IRepository<GroundTemplate>, Repository<GroundTemplate>>();
@@ -20,6 +22,7 @@ builder.Services.AddScoped<IPlaintiffRepository, PlaintiffRepository>();
 builder.Services.AddScoped<IPlaintiffService, PlaintiffService>();
 builder.Services.AddScoped<IObslugaGus, ObslugaGus>();
 builder.Services.AddScoped<ILawsuitRepository, LawsuitRepository>();
+builder.Services.AddScoped<ILawsuitService,LawsuitService>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("CorsPolicy", builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());

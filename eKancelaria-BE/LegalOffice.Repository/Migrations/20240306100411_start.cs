@@ -195,7 +195,7 @@ namespace LegalOffice.Repository.Migrations
                     Type = table.Column<int>(type: "int", nullable: false),
                     Tin = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AddressId = table.Column<int>(type: "int", nullable: false),
-                    AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    AccountNumber = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LawsuitId = table.Column<int>(type: "int", nullable: true),
                     LawsuitId1 = table.Column<int>(type: "int", nullable: true),
                     Company_Name = table.Column<string>(type: "nvarchar(max)", nullable: true),

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\eCourt\eCourt.csproj" />
     <ProjectReference Include="..\LegalOffice.Repository\LegalOffice.Repository.csproj" />
   </ItemGroup>
 

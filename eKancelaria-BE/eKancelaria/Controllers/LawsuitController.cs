@@ -1,5 +1,6 @@
 ﻿using LegalOffice.Domain.Models;
 using LegalOffice.Repository;
+using LegalOffice.Services;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -11,10 +12,12 @@ namespace eKancelaria.Controllers
     public class LawsuitController : ControllerBase
     {
         private readonly ILawsuitRepository _lawsuitRepository;
+        private readonly ILawsuitService _lawsuitService;
 
-        public LawsuitController(ILawsuitRepository lawsuitRepository)
+        public LawsuitController(ILawsuitRepository lawsuitRepository, ILawsuitService lawsuitService)
         {
             _lawsuitRepository = lawsuitRepository;
+            _lawsuitService = lawsuitService;
         }
 
         [HttpGet]
@@ -66,6 +69,7 @@ namespace eKancelaria.Controllers
                 {
                     Proxy = 1,
                     Basis = "Zarządca",
+                    Name="Radca",
                     Address = new Address
                     {
                         Street = "ul. Boczna Lubomelskiej",
@@ -119,9 +123,10 @@ namespace eKancelaria.Controllers
 
         // GET api/<LawsuitController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task Get(int id)
         {
-            return "value";
+          await _lawsuitService.SendLawsuit(id);
+           
         }
 
         // POST api/<LawsuitController>
