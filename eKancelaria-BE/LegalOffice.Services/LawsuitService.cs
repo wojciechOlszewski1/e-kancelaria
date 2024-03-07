@@ -158,6 +158,7 @@ namespace LegalOffice.Services
             var listaPozwanych = lawsuit.Defendant.Select(p => GetPlantiffToSend(p)).ToArray(); 
             var lawsuitToSent = new PozewEPU
             {
+                version = "2.0",
                 ID = (ulong)lawsuit.Id,
                 dataZlozenia = DateTime.Now.ToString("yyyy-MM-dd"),
                 Adresat = new typAdresat
@@ -179,6 +180,12 @@ namespace LegalOffice.Services
                 {
                     pelnomocnik = lawsuit.Submitter.Proxy,
                     podstawa = lawsuit.Submitter.Basis,
+                    Osoba= new typOsoba
+                    {
+                        Imie = lawsuit.Submitter.Person.FirstName,
+                        Nazwisko = lawsuit.Submitter.Person.LastName,
+                        PESEL = lawsuit.Submitter.Person.Pesel,
+                    },
                     Adres = new typAdres
                     {
                         ulica = lawsuit.Submitter.Address.Street,
@@ -203,7 +210,7 @@ namespace LegalOffice.Services
                 KosztyZastepstwa = new typKoszty
                 {
                     wartosc = lawsuit.Cost.Value,
-                    zasadzenie = lawsuit.Cost.Adjudication,
+                    zasadzenie = (sbyte)lawsuit.Cost.Adjudication,
                     opis = lawsuit.Cost.Description,
                 },
                 RachunekDoZwrotuOplat = new typRachunekDoZwrotuOplat

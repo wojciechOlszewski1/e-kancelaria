@@ -29,6 +29,7 @@ namespace LegalOffice.Repository
                 .Include(l => l.Plantiffs).ThenInclude(p => p.Address)
                 .Include(l=>l.Defendant).ThenInclude(p => p.Address)
                 .Include(l => l.Submitter).ThenInclude(p => p.Address)
+                .Include(l=>l.Submitter).ThenInclude(p => p.Person)
                 .Include(l => l.Fee)
                 .Include(l => l.Cost)
                 .Include(l => l.RefundAccount)

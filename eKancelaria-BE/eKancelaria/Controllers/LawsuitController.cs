@@ -123,9 +123,10 @@ namespace eKancelaria.Controllers
 
         // GET api/<LawsuitController>/5
         [HttpGet("{id}")]
-        public async Task Get(int id)
+        public async Task<IActionResult> Get(int id)
         {
           await _lawsuitService.SendLawsuit(id);
+        return Ok();
            
         }
 
